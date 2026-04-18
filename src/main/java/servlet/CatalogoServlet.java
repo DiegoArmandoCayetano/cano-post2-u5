@@ -38,9 +38,9 @@ public class CatalogoServlet extends HttpServlet {
         String categoria = req.getParameter("cat");
 
         List<Producto> resultado = catalogo.stream()
-                .filter(p -> busqueda == null || busqueda.isBlank() ||
+                .filter(p -> busqueda == null || busqueda.trim().isEmpty() ||
                         p.getNombre().toLowerCase().contains(busqueda.toLowerCase()))
-                .filter(p -> categoria == null || categoria.isBlank() ||
+                .filter(p -> categoria == null || categoria.trim().isEmpty() ||
                         p.getCategoria().equals(categoria))
                 .collect(Collectors.toList());
 
